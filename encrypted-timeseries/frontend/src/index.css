@@ -1,0 +1,268 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #0a0a0a;
+  color: #e5e5e5;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+.app {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  background: #141414;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  border: 1px solid #262626;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background: #1a1a1a;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #2a2a2a;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.status-indicator.connected {
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.status-indicator.disconnected {
+  background: #666666;
+  box-shadow: 0 0 8px rgba(102, 102, 102, 0.5);
+  animation: none;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.stats-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: #141414;
+  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid #262626;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
+  border-color: #404040;
+}
+
+.stat-card h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #737373;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+
+.stat-value {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.stat-value.success {
+  color: #ffffff;
+}
+
+.stat-value.error {
+  color: #a3a3a3;
+}
+
+.message-list {
+  background: #141414;
+  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid #262626;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.message-list h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.no-messages {
+  text-align: center;
+  padding: 60px 40px;
+  color: #525252;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.messages-container {
+  max-height: 600px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 8px;
+}
+
+.messages-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+  background: #525252;
+}
+
+.message-card {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 18px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.message-card:hover {
+  background: #202020;
+  border-color: #404040;
+  transform: translateX(4px);
+}
+
+.message-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.message-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.2px;
+}
+
+.message-route {
+  font-size: 14px;
+  color: #a3a3a3;
+  font-weight: 500;
+}
+
+.message-time {
+  font-size: 13px;
+  color: #737373;
+  font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 12px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .stats-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .message-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .messages-container {
+    max-height: 400px;
+  }
+}
