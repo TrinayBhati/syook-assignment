@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb';
 
-const uri = 'mongodb+srv://temp_db_db_user:TQI3M3aMg096OdoX@temp-db.fely4gz.mongodb.net/encrypted_timeseries?retryWrites=true&w=majority&appName=Temp-DB';
+const uri = process.env.MONGODB_URI;
 
 async function dropIndexes() {
     const client = new MongoClient(uri);
